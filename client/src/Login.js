@@ -25,7 +25,7 @@ class Login extends Component {
         axios.post("/register", {
             username: this.state.user,
             password: this.state.passwrd        
-        });
+        })
     }
 
     tryLogin() {

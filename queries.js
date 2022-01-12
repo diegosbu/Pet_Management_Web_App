@@ -8,7 +8,7 @@ function insertUser(name, password) {
         if (err) {
             console.log(err.stack)
         } else {
-            console.log("user registered!")
+
         }
     })
 }
@@ -40,6 +40,4 @@ function getAllUsers() {
 }
 
 module.exports = {insertUser, getUser, getAllUsers}
-// insertUser("karenasamyou", "12345");
-// getAllUsers();
 

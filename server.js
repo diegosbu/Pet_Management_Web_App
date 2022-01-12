@@ -10,12 +10,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-
 // Routes
-app.get("/", (req, res) => {
-    res.send("<h1>Huh</h1>")
-})
-
 app.post("/register" , (req, res) => {
     var uname =req.body.username;
     var passwrd = req.body.password;
