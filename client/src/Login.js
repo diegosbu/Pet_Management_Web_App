@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './styles/Login.css'
+import './styles/Login.css';
+const axios = require("axios");
 
 class Login extends Component {
     constructor(props) {
@@ -8,7 +9,8 @@ class Login extends Component {
 
         this.handleChange1 = this.handleChange1.bind(this);
         this.handleChange2 = this.handleChange2.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.tryLogin = this.tryLogin.bind(this);
+        this.tryRegister = this.tryRegister.bind(this);
     }
 
     handleChange1(event) {
@@ -19,14 +21,24 @@ class Login extends Component {
         this.setState({passwrd: event.target.value});
     }
 
-    handleSubmit(event) {
-        alert("A username has been submitted" + this.state.user + this.state.passwrd);
+    tryRegister() {
+        axios.post("/register", {
+            username: this.state.user,
+            password: this.state.passwrd        
+        });
+    }
+
+    tryLogin() {
+        axios.post("/login", {
+            username: this.state.user,
+            password: this.state.passwrd        
+        });
     }
 
     render() {
         return (
             <div id = "LoginForm">
-                <form onSubmit = {this.handleSubmit}>
+                <form>
                     Username:
                     <input type = "text" name = "userName" value = {this.state.user} onChange =
                         {this.handleChange1}></input>
@@ -39,7 +51,8 @@ class Login extends Component {
 
                     <br></br>
 
-                    <input id = "submitForm" type = "submit" />
+                    <button id = "submitForm" onClick = {this.tryRegister}> Register </button>
+                    <button id = "loginButton" onClick = {this.tryLogin}> Login </button>
                 </form>
             </div>
         );
