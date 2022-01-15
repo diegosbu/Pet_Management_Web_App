@@ -1,5 +1,6 @@
 // Modules
 const express = require("express");
+const session = require("express-session");
 const config = require("./config/config")
 const cors = require("cors");
 const { insertUser, getUser, getAllUsers } = require("./queries");
@@ -12,7 +13,7 @@ app.use(cors());
 
 // Routes
 app.post("/register" , (req, res) => {
-    var uname =req.body.username;
+    var uname =   req.body.username;
     var passwrd = req.body.password;
 
     insertUser(uname, passwrd);
